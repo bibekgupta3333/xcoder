@@ -57,6 +57,7 @@ tenacity = "^8.1.0,!=8.4.0"
 tqdm = "^4.66.0"
 humanize = "^4.10.0"
 watchdog = "^4.0.0"
+onnxruntime = "^1.23.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.0"

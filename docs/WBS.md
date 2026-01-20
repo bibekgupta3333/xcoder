@@ -44,61 +44,122 @@
 
 ### 2.1 CLI Foundation
 
-- [ ] 2.1.1 Install and configure Click/Typer framework
-- [ ] 2.1.2 Create main CLI entry point (`xcoder/cli.py`)
-- [ ] 2.1.3 Implement version command (`xcoder --version`)
-- [ ] 2.1.4 Implement help system (`xcoder --help`)
-- [ ] 2.1.5 Create command group structure
-- [ ] 2.1.6 Add colored terminal output (Rich/Colorama)
-- [ ] 2.1.7 Implement progress bars and spinners
-- [ ] 2.1.8 Add interactive prompts support
+- [x] 2.1.1 Install and configure Click/Typer framework
+- [x] 2.1.2 Create main CLI entry point (`xcoder/cli.py`)
+- [x] 2.1.3 Implement version command (`xcoder --version`)
+- [x] 2.1.4 Implement help system (`xcoder --help`)
+- [x] 2.1.5 Create command group structure
+- [x] 2.1.6 Add colored terminal output (Rich/Colorama)
+- [x] 2.1.7 Implement progress bars and spinners
+- [x] 2.1.8 Add interactive prompts support
+- [x] 2.1.9 **NEW:** Add global CLI options (--verbose, --debug, --no-color)
+- [x] 2.1.10 **NEW:** Create comprehensive CLI utility library
+- [x] 2.1.11 **NEW:** Implement ASCII banner and branding
+- [x] 2.1.12 **NEW:** Add rich error handling and display
 
 ### 2.2 Init Command
 
-- [ ] 2.2.1 Create `xcoder init` command
-- [ ] 2.2.2 Generate `.xcoderules` config file in project root
-- [ ] 2.2.3 Create `.xcoder/` directory for local storage
-- [ ] 2.2.4 Initialize vector database schema
-- [ ] 2.2.5 Set up project-specific configuration
-- [ ] 2.2.6 Detect project type (Python/JS/TS/etc.)
-- [ ] 2.2.7 Create default agent roles configuration
-- [ ] 2.2.8 Initialize memory database
-- [ ] 2.2.9 Add verification checks post-init
+- [x] 2.2.1 Create `xcoder init` command
+- [x] 2.2.2 Generate `.xcoderules` config file in project root
+- [x] 2.2.3 Create `.xcoder/` directory for local storage
+- [x] 2.2.4 Initialize vector database schema
+- [x] 2.2.5 Set up project-specific configuration
+- [x] 2.2.6 Detect project type (Python/JS/TS/etc.)
+- [x] 2.2.7 Create default agent roles configuration
+- [x] 2.2.8 Initialize memory database
+- [x] 2.2.9 Add verification checks post-init
+- [x] 2.2.10 **NEW:** Support multiple project templates (Python, JS, TS, Go, Rust, Java)
+- [x] 2.2.11 **NEW:** Auto-detect project type from markers and file extensions
+- [x] 2.2.12 **NEW:** Generate structured directory layout (.xcoder/data, cache, logs, memory, agents)
+- [x] 2.2.13 **NEW:** Create agent roles YAML configuration
+- [x] 2.2.14 **NEW:** Auto-update .gitignore with XCoder entries
+- [x] 2.2.15 **NEW:** Display detailed initialization summary with next steps
+- [ ] 2.2.16 **ENHANCEMENT:** Add interactive template selection wizard
+- [ ] 2.2.17 **ENHANCEMENT:** Support custom template files from ~/.xcoder/templates/
 
 ### 2.3 Ragify Command (Code Vectorization)
 
-- [ ] 2.3.1 Create `xcoder ragify` command
-- [ ] 2.3.2 Implement recursive directory scanning
-- [ ] 2.3.3 Create file filtering logic (ignore node_modules, .git, etc.)
-- [ ] 2.3.4 Build code parsing system (AST analysis)
-- [ ] 2.3.5 Extract code chunks (functions, classes, modules)
-- [ ] 2.3.6 Generate embeddings using Ollama
-- [ ] 2.3.7 Store vectors in vector database with metadata
-- [ ] 2.3.8 Create incremental update mechanism
-- [ ] 2.3.9 Add progress tracking for large codebases
-- [ ] 2.3.10 Implement `ragify --watch` for continuous sync
+- [x] 2.3.1 Create `xcoder ragify` command
+- [x] 2.3.2 Implement recursive directory scanning
+- [x] 2.3.3 Create file filtering logic (ignore node_modules, .git, etc.)
+- [x] 2.3.4 Build code parsing system (AST analysis)
+- [x] 2.3.5 Extract code chunks (functions, classes, modules)
+- [x] 2.3.6 Generate embeddings using Ollama
+- [x] 2.3.7 Store vectors in vector database with metadata
+- [x] 2.3.8 Create incremental update mechanism
+- [x] 2.3.9 Add progress tracking for large codebases
+- [ ] 2.3.10 Implement `ragify --watch` for continuous sync (placeholder added)
+- [x] 2.3.11 **ENHANCEMENT:** Add --include and --exclude patterns for fine-grained control
+- [x] 2.3.12 **ENHANCEMENT:** Display statistics (files scanned, chunks created, embeddings generated)
+- [x] 2.3.13 **ENHANCEMENT:** Support multiple embedding models selection
+- [x] 2.3.14 **ENHANCEMENT:** Add dry-run mode to preview what will be vectorized
+- [x] 2.3.15 **ENHANCEMENT:** Implement smart chunking with language-aware boundaries
 
 ### 2.4 Agent Command (Agentic Tasks)
 
-- [ ] 2.4.1 Create `xcoder agent` command
-- [ ] 2.4.2 Implement interactive chat mode
-- [ ] 2.4.3 Add one-shot task execution mode
-- [ ] 2.4.4 Build context retrieval from vector DB
-- [ ] 2.4.5 Implement agent role selection (backend/frontend/etc.)
-- [ ] 2.4.6 Create task planning and breakdown logic
-- [ ] 2.4.7 Add code generation capabilities
-- [ ] 2.4.8 Implement file modification system
-- [ ] 2.4.9 Build code review and validation
-- [ ] 2.4.10 Add rollback/undo functionality
+- [x] 2.4.1 Create `xcoder agent` command
+- [x] 2.4.2 Implement interactive chat mode
+- [x] 2.4.3 Add one-shot task execution mode
+- [x] 2.4.4 Build context retrieval from vector DB
+- [x] 2.4.5 Implement agent role selection (backend/frontend/etc.)
+- [x] 2.4.6 Create task planning and breakdown logic
+- [x] 2.4.7 Add code generation capabilities
+- [ ] 2.4.8 Implement file modification system (requires additional tools)
+- [ ] 2.4.9 Build code review and validation (requires additional tools)
+- [ ] 2.4.10 Add rollback/undo functionality (requires git integration)
+- [x] 2.4.11 **ENHANCEMENT:** Add --context flag for providing additional context files
+- [x] 2.4.12 **ENHANCEMENT:** Add --model flag for model selection
+- [x] 2.4.13 **ENHANCEMENT:** Implement multi-turn conversation in interactive mode
+- [x] 2.4.14 **ENHANCEMENT:** Add command history and autocomplete in interactive mode
+- [x] 2.4.15 **ENHANCEMENT:** Support slash commands (/help, /exit, /clear, /save)
+- [x] 2.4.16 **ENHANCEMENT:** Display agent thinking process and reasoning steps
+- [x] 2.4.17 **ENHANCEMENT:** Add confirmation prompts before applying code changes
 
 ### 2.5 Memory Command
 
-- [ ] 2.5.1 Create `xcoder memory` command group
-- [ ] 2.5.2 Implement `memory list` subcommand
-- [ ] 2.5.3 Implement `memory clear` subcommand
-- [ ] 2.5.4 Implement `memory export` subcommand
-- [ ] 2.5.5 Add memory search capabilities
-- [ ] 2.5.6 Create memory visualization
+- [x] 2.5.1 Create `xcoder memory` command group
+- [x] 2.5.2 Implement `memory list` subcommand
+- [x] 2.5.3 Implement `memory clear` subcommand
+- [x] 2.5.4 Implement `memory export` subcommand
+- [x] 2.5.5 Add memory search capabilities
+- [x] 2.5.6 Create memory visualization
+- [x] 2.5.7 **ENHANCEMENT:** Add `memory stats` for analytics
+- [x] 2.5.8 **ENHANCEMENT:** Implement memory import functionality
+- [x] 2.5.9 **ENHANCEMENT:** Add memory tagging and categorization
+- [x] 2.5.10 **ENHANCEMENT:** Support multiple export formats (JSON, Markdown, CSV)
+- [ ] 2.5.11 **ENHANCEMENT:** Add memory compression and archival (future)
+- [x] 2.5.12 **ENHANCEMENT:** Implement memory search with filters (date, role, topic)
+
+### 2.6 **NEW:** Config Command
+
+- [ ] 2.6.1 **NEW:** Create `xcoder config` command group
+- [ ] 2.6.2 **NEW:** Implement `config show` to display current configuration
+- [ ] 2.6.3 **NEW:** Implement `config set` to modify configuration values
+- [ ] 2.6.4 **NEW:** Implement `config reset` to restore defaults
+- [ ] 2.6.5 **NEW:** Implement `config validate` to check configuration
+- [ ] 2.6.6 **NEW:** Support dotted notation for nested config keys (e.g., rag.chunk_size)
+- [ ] 2.6.7 **NEW:** Add configuration schema validation
+
+### 2.7 **NEW:** Status Command
+
+- [ ] 2.7.1 **NEW:** Create `xcoder status` command
+- [ ] 2.7.2 **NEW:** Display initialization status
+- [ ] 2.7.3 **NEW:** Show vector database statistics (documents, embeddings)
+- [ ] 2.7.4 **NEW:** Display memory usage and conversation count
+- [ ] 2.7.5 **NEW:** Show Ollama connection status and available models
+- [ ] 2.7.6 **NEW:** Display last ragify timestamp and coverage
+- [ ] 2.7.7 **NEW:** Add health check for all services
+
+### 2.8 **NEW:** Doctor Command
+
+- [ ] 2.8.1 **NEW:** Create `xcoder doctor` diagnostic command
+- [ ] 2.8.2 **NEW:** Check Ollama installation and connectivity
+- [ ] 2.8.3 **NEW:** Verify vector database connection
+- [ ] 2.8.4 **NEW:** Check Python environment and dependencies
+- [ ] 2.8.5 **NEW:** Validate configuration files
+- [ ] 2.8.6 **NEW:** Test embedding generation
+- [ ] 2.8.7 **NEW:** Provide fix suggestions for common issues
+- [ ] 2.8.8 **NEW:** Generate diagnostic report
 
 ---
 
@@ -222,14 +283,16 @@
 
 ### 6.2 Pre-built Agent Roles
 
-- [ ] 6.2.1 Create **BackendAgent** (Python/FastAPI/Django focus)
-- [ ] 6.2.2 Create **FrontendAgent** (React/Vue/HTML/CSS focus)
-- [ ] 6.2.3 Create **DatabaseAgent** (SQL/ORM focus)
-- [ ] 6.2.4 Create **DevOpsAgent** (Docker/CI/CD focus)
-- [ ] 6.2.5 Create **TestingAgent** (pytest/unittest focus)
-- [ ] 6.2.6 Create **DocumentationAgent** (README/docs focus)
-- [ ] 6.2.7 Create **ReviewerAgent** (code review focus)
-- [ ] 6.2.8 Create **DebuggerAgent** (error analysis focus)
+- [x] 6.2.1 Create **AutoAgent** (auto-detect role based on task context)
+- [x] 6.2.2 Create **GeneralAgent** (general purpose, handles any task)
+- [ ] 6.2.3 Create **BackendAgent** (Python/FastAPI/Django focus)
+- [ ] 6.2.4 Create **FrontendAgent** (React/Vue/HTML/CSS focus)
+- [ ] 6.2.5 Create **DatabaseAgent** (SQL/ORM focus)
+- [ ] 6.2.6 Create **DevOpsAgent** (Docker/CI/CD focus)
+- [ ] 6.2.7 Create **TestingAgent** (pytest/unittest focus)
+- [ ] 6.2.8 Create **DocumentationAgent** (README/docs focus)
+- [ ] 6.2.9 Create **ReviewerAgent** (code review focus)
+- [ ] 6.2.10 Create **DebuggerAgent** (error analysis focus)
 
 ### 6.3 Agent Capabilities
 
