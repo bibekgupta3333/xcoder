@@ -1,0 +1,106 @@
+version: '3.8'
+
+services:
+  # XCoder Backend Service
+  xcoder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xcoder-app
+    volumes:
+      - .:/app
+      - xcoder-data:/app/.xcoder/data
+      - xcoder-cache:/app/.xcoder/cache
+    environment:
+      - PYTHONUNBUFFERED=1
+      - OLLAMA_HOST=${OLLAMA_HOST:-http://host.docker.internal:11434}
+      - CHROMADB_HOST=${CHROMADB_HOST:-chromadb}
+      - CHROMADB_PORT=${CHROMADB_PORT:-8000}
+      - POSTGRES_HOST=${POSTGRES_HOST:-postgres}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-xcoder}
+      - POSTGRES_USER=${POSTGRES_USER:-xcoder}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-xcoder}
+    depends_on:
+      chromadb:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    networks:
+      - xcoder-network
+    stdin_open: true
+    tty: true
+    command: tail -f /dev/null  # Keep container running
+
+  # ChromaDB Vector Database
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: xcoder-chromadb
+    volumes:
+      - chromadb-data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY:-FALSE}
+    ports:
+      - "${CHROMADB_PORT:-8001}:8000"
+    networks:
+      - xcoder-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # PostgreSQL Database for metadata and memory
+  postgres:
+    image: postgres:16-alpine
+    container_name: xcoder-postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-xcoder}
+      - POSTGRES_USER=${POSTGRES_USER:-xcoder}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-xcoder}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    networks:
+      - xcoder-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-xcoder}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Optional: pgAdmin for database management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: xcoder-pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL:-admin@xcoder.local}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD:-admin}
+      - PGADMIN_CONFIG_SERVER_MODE=False
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    depends_on:
+      - postgres
+    networks:
+      - xcoder-network
+    profiles:
+      - tools
+
+networks:
+  xcoder-network:
+    driver: bridge
+
+volumes:
+  xcoder-data:
+    driver: local
+  xcoder-cache:
+    driver: local
+  chromadb-data:
+    driver: local
+  postgres-data:
+    driver: local
